@@ -5,9 +5,8 @@ namespace FOS\FacebookBundle\Facebook;
 use Symfony\Component\HttpFoundation\Session;
 
 /**
- * Extends the BaseFacebook class with the intent of using
- * PHP sessions to store user ids and access tokens. 
- *
+ * Implements Symfony2 session persistence for Facebook.
+ * 
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
 class FacebookSessionPersistence extends \BaseFacebook
@@ -16,13 +15,9 @@ class FacebookSessionPersistence extends \BaseFacebook
 
     private $session;
     private $prefix;
+    protected static $kSupportedKeys = array('state', 'code', 'access_token', 'user_id');
 
    /**
-    * Identical to the parent constructor, except that
-    * we start a PHP session to store the user ID and
-    * access token if during the course of execution
-    * we discover them.
-    *
     * @param Array $config the application configuration.
     * @see BaseFacebook::__construct in facebook.php
     */
@@ -34,8 +29,6 @@ class FacebookSessionPersistence extends \BaseFacebook
 
         parent::__construct($config);
     }
-    
-    protected static $kSupportedKeys = array('state', 'code', 'access_token', 'user_id');
 
     /**
      * Stores the given ($key, $value) pair, so that future calls to
@@ -46,7 +39,6 @@ class FacebookSessionPersistence extends \BaseFacebook
      *
      * @return void
      */
-    
     protected function setPersistentData($key, $value)
     {
         if (!in_array($key, self::$kSupportedKeys)) {
