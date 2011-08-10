@@ -81,7 +81,7 @@ class FacebookSessionPersistence extends \BaseFacebook
     protected function clearPersistentData($key)
     {
         if (!in_array($key, self::$kSupportedKeys)) {
-	        self::errorLog('Unsupported key passed to clearPersistentData.');
+            self::errorLog('Unsupported key passed to clearPersistentData.');
 	        return;
         }
 	
