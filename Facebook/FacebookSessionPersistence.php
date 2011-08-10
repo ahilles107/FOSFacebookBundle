@@ -68,15 +68,16 @@ class FacebookSessionPersistence extends \BaseFacebook
     protected function getPersistentData($key, $default = false)
     {
         if (!in_array($key, self::$kSupportedKeys)) {
-	      self::errorLog('Unsupported key passed to getPersistentData.');
-	      return $default;
-	    }
+          self::errorLog('Unsupported key passed to getPersistentData.');
+          return $default;
+        }
+        
+        if ($this->session->has($this->constructSessionVariableName($key))) {
+          return $this->session->get($this->constructSessionVariableName($key));
+        }
 	    
-	    if ($this->session->has($this->constructSessionVariableName($key))) {
-	      return $this->session->get($this->constructSessionVariableName($key));
-	    } else {
-	      return $default;
-	    }
+        return $default;
+	    
     }
 
     /**
