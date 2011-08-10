@@ -42,8 +42,8 @@ class FacebookSessionPersistence extends \BaseFacebook
     protected function setPersistentData($key, $value)
     {
         if (!in_array($key, self::$kSupportedKeys)) {
-          self::errorLog('Unsupported key passed to setPersistentData.');
-          return;
+            self::errorLog('Unsupported key passed to setPersistentData.');
+            return;
         }
 	    
         $this->session->set($this->constructSessionVariableName($key), $value);
@@ -60,12 +60,12 @@ class FacebookSessionPersistence extends \BaseFacebook
     protected function getPersistentData($key, $default = false)
     {
         if (!in_array($key, self::$kSupportedKeys)) {
-          self::errorLog('Unsupported key passed to getPersistentData.');
-          return $default;
+            self::errorLog('Unsupported key passed to getPersistentData.');
+            return $default;
         }
         
         if ($this->session->has($this->constructSessionVariableName($key))) {
-          return $this->session->get($this->constructSessionVariableName($key));
+            return $this->session->get($this->constructSessionVariableName($key));
         }
 	    
         return $default;
@@ -81,8 +81,8 @@ class FacebookSessionPersistence extends \BaseFacebook
     protected function clearPersistentData($key)
     {
     	if (!in_array($key, self::$kSupportedKeys)) {
-	      self::errorLog('Unsupported key passed to clearPersistentData.');
-	      return;
+	        self::errorLog('Unsupported key passed to clearPersistentData.');
+	        return;
 	    }
 	
         $this->session->remove($this->constructSessionVariableName($key));
