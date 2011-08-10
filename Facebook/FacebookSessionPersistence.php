@@ -49,10 +49,10 @@ class FacebookSessionPersistence extends \BaseFacebook
     
     protected function setPersistentData($key, $value)
     {
-	    if (!in_array($key, self::$kSupportedKeys)) {
-	      self::errorLog('Unsupported key passed to setPersistentData.');
-	      return;
-	    }
+        if (!in_array($key, self::$kSupportedKeys)) {
+          self::errorLog('Unsupported key passed to setPersistentData.');
+          return;
+        }
 	    
         $this->session->set($this->constructSessionVariableName($key), $value);
     }
@@ -111,11 +111,12 @@ class FacebookSessionPersistence extends \BaseFacebook
         }
     }
 
-    protected function constructSessionVariableName($key) {
+    protected function constructSessionVariableName($key) 
+    {
     	return $this->prefix.implode('_', array(
     		'fb',
     		$this->getAppId(),
-    		$key
+    		$key,
     	));
     }
 }
