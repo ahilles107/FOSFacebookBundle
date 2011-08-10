@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Session;
 
 /**
  * Implements Symfony2 session persistence for Facebook.
- * 
+ *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
 class FacebookSessionPersistence extends \BaseFacebook
