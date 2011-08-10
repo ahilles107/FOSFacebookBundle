@@ -106,10 +106,10 @@ class FacebookSessionPersistence extends \BaseFacebook
 
     protected function constructSessionVariableName($key) 
     {
-    	return $this->prefix.implode('_', array(
-    		'fb',
-    		$this->getAppId(),
-    		$key,
-    	));
+        return $this->prefix.implode('_', array(
+            'fb',
+            $this->getAppId(),
+            $key,
+        ));
     }
 }
