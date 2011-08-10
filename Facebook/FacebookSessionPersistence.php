@@ -18,7 +18,7 @@ class FacebookSessionPersistence extends \BaseFacebook
     protected static $kSupportedKeys = array('state', 'code', 'access_token', 'user_id');
 
    /**
-    * @param Array $config the application configuration.
+    * @param array $config the application configuration.
     * @see BaseFacebook::__construct in facebook.php
     */
     public function __construct($config, Session $session, $prefix = self::PREFIX)
@@ -80,10 +80,10 @@ class FacebookSessionPersistence extends \BaseFacebook
      */
     protected function clearPersistentData($key)
     {
-    	if (!in_array($key, self::$kSupportedKeys)) {
+        if (!in_array($key, self::$kSupportedKeys)) {
 	        self::errorLog('Unsupported key passed to clearPersistentData.');
 	        return;
-	    }
+        }
 	
         $this->session->remove($this->constructSessionVariableName($key));
     }
